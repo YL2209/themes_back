@@ -1,0 +1,337 @@
+:root
+  // 鼠标指针
+  --cursor-arrow: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/Arrow.cur")
+  --cursor-backrunning: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/IBeam.cur")
+  --cursor-ban: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/NO.cur")
+  --cursor-busy: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/UpArrow.cur")
+  --cursor-handwriting: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/Sv.cur")
+  --cursor-help: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/Help.cur")
+  --cursor-link: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/Help.cur")
+  --cursor-move: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/Sall.cur")
+  --cursor-input: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/cursor/Launa/IBeam.cur")
+
+  // 全局默认鼠标指针 
+body *,
+html *
+  cursor: var(--cursor-arrow),auto!important
+img
+  cursor: var(--cursor-help),auto!important
+a:hover
+  cursor: var(--cursor-link),auto!important
+textarea,
+input
+  &:hover
+    cursor: var(--cursor-input),auto!important
+canvas:hover
+  cursor: var(--cursor-move),auto!important
+article h1:hover,
+article h2:hover,
+article h3:hover,
+article h4:hover,
+article h5:hover,
+article h6:hover,
+article li:hover,
+article p:hover,
+article span:hover
+  cursor: var(--cursor-handwriting),auto!important
+summary:hover
+  cursor: var(--cursor-help),auto!important
+button:hover
+  cursor: var(--cursor-link),auto !important
+i:hover
+  cursor: var(--cursor-arrow),auto!important
+#footer-wrap a:hover
+  cursor: var(--cursor-link),auto!important
+#pagination
+  .page-number:hover
+    cursor: var(--cursor-link),auto!important
+#nav
+  .site-page:hover
+    cursor: var(--cursor-link),auto!important
+
+
+
+
+// 阿里图标大小 
+nav,
+#waifu-toggle,
+#waifu-times1,
+#waifu-daichuli1,
+#rightside
+  .iconfont
+    font-size: 20px
+
+
+// 自定义字体 
+// 在线链接服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 
+//  @font-face {
+//   font-family: "alimm";
+//   font-weight: 400;
+//   src: url("https://at.alicdn.com/wf/webfont/lhQ26CLAua0B/d3NQE89KP2iC.woff2") format("woff2"),url("//at.alicdn.com/wf/webfont/lhQ26CLAua0B/I55Z6yTIwTk0.woff") format("woff");
+//   font-display: swap;
+// } 
+
+// /* 自定义字体 */
+@font-face
+  font-family: 'alimm2024'
+  font-display: swap
+  src: url("https://at.alicdn.com/wf/webfont/lhQ26CLAua0B/d3NQE89KP2iC.woff2") format("woff2"),url("//at.alicdn.com/wf/webfont/lhQ26CLAua0B/I55Z6yTIwTk0.woff") format("woff")
+  font-weight: 400
+
+
+@font-face
+  font-family: "touxiang"
+  src: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/fontsdest/touxiang.eot")
+  src: url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/fontsdest/touxiang.ttf") format("truetype"),url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/fontsdest/touxiang.eot?#iefix") format("embedded-opentype"),url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/fontsdest/touxiang.woff") format("woff"),url("https://cdn.jsdelivr.net/gh/YL2209/YL2209.github.io/fontsdest/touxiang.svg.svg#touxiang") format("svg")
+  font-style: normal
+  font-weight: normal
+
+#inof-ttf
+  font-family: 'touxiang'
+
+
+
+// 电子时钟字体大小
+#hexo_electric_clock
+  font-size: 16px
+
+
+div#runtime
+  width: max-content !important
+
+
+// 一图流设置
+//  文章头部图片透明 
+.post
+  .post-bg
+    background-color: #00000000 !important
+    background-image: none !important
+
+// 页脚透明 
+#footer:before
+  background-color: transparent
+
+
+
+
+
+
+
+.aplayer
+  &.aplayer-fixed
+    &.aplayer-narrow
+      .aplayer-body
+        left: 0px !important
+        // 默认情况下缩进左侧66px，只留一点箭头部分 
+        background-color:#ff7242
+        transition: all 1.0s
+        transform: translate(-66px,0)
+        border-radius: 0 5px 5px 0 !important
+        background: #ffffff8a !important
+
+        &:hover 
+          left: 0 !important
+          // 鼠标悬停是左侧缩进归零，完全显示按钮 
+          background-color:#ff7242
+          transition: all 1.0s
+          transform: translate(0px,0)
+
+        .aplayer-miniswitcher
+          border-radius: 0 5px 5px 0 !important
+          background: #e6e6e600 !important
+
+  .aplayer-list 
+    ol&::-webkit-scrollbar-thumb 
+      border-radius: 3px
+      background-color: var(--scrollbar-color) !important
+
+    ol&::-webkit-scrollbar 
+      background-color: #eee0 !important
+      width: 5px
+
+@media screen and (max-width: 1000px) 
+  .aplayer
+    &.aplayer-fixed 
+      .aplayer-lrc 
+        display: none !important
+  
+  canvas#canvas_sakura 
+    display: none
+  
+
+
+// 相册页面定位修复
+.justified-gallery>div>img,
+.justified-gallery>figure>img,
+.justified-gallery>a>a>img,
+.justified-gallery>div>a>img,
+.justified-gallery>figure>a>img,
+.justified-gallery>a>svg,
+.justified-gallery>div>svg,
+.justified-gallery>figure>svg,
+.justified-gallery>a>a>svg,
+.justified-gallery>div>a>svg,
+.justified-gallery>figure>a>svg
+  position: static !important
+
+
+// 十二生肖时间轴 
+svg.icon
+  // 这里定义svg.icon，避免和Butterfly自带的note标签冲突 
+  width: 1em
+  height: 1em
+  //  width和height定义图标的默认宽度和高度
+  vertical-align: -0.15em
+  fill: currentColor
+  overflow: hidden
+
+
+
+//  评论魔改 
+.wl-emoji-popup 
+  .wl-tabs
+    display: flex
+    position: relative
+    overflow-x: scroll
+    height: 2em
+    padding: 0 6px 1px
+    white-space: nowrap
+    justify-content: flex-start
+    flex-wrap: nowrap
+    flex-direction: row
+    align-items: center
+
+.wl-editor
+  min-height: 14.75em !important
+
+ul.wl-sort
+  display: flex
+  margin: 0
+  list-style-type: none
+  flex-wrap: nowrap
+  flex-direction: row
+
+
+
+
+
+#waifu-tips span
+  color: rgb(185, 185, 185)
+
+
+// 禁止复制 
+body
+  -webkit-user-select: none
+  -moz-user-select: none
+  -o-user-select: none
+  user-select: none
+
+// 代码允许复制 
+#article-container pre
+  -webkit-user-select: text
+  -moz-user-select: text
+  -o-user-select: text
+  user-select: text
+
+
+//  弹窗魔改 
+.snackbar-container
+  border-radius: 30px !important
+  //  color: #fff; 
+
+
+.snackbar-container p
+  font-weight: 800!important
+  color: #000000 !important
+  //  font-weight: 600; 
+
+
+
+#article-container a 
+  color: var(--font-color) !important
+
+#pagination.pagination-post
+  border-radius: 20px
+
+
+.article-sort-item-img 
+  border-radius: 10px
+
+
+
+
+// 隐藏背景音乐图标 
+#Audio-Background
+  display: none
+
+
+// 头像 
+.card-widget
+  &.card-info 
+    .player-avatar
+      img
+        border-radius: 100px
+#hexo_electric_clock
+  .clock-row
+    display: flex
+    flex-wrap: nowrap
+    white-space: nowrap
+    justify-content: space-around
+
+// hexo-butterfly-swiper 基于 swiper 的首页置顶轮播图 
+// .blog-slider.swiper-container-fade.swiper-container-horizontal .swiper-pagination-bullet {
+//   margin: 8px 0 !important;
+// } 
+
+
+.cardHover,
+.error404 #error-wrap .error-content,
+.layout > div:first-child:not(.recent-posts),
+#recent-posts > .recent-post-item,
+#aside-content .card-widget,
+.layout > .recent-posts .pagination > *:not(.space)
+  border-radius: 25px
+
+
+
+//  背景宇宙星光  
+#universe
+  display: block
+  position: fixed
+  margin: 0
+  padding: 0
+  border: 0
+  outline: 0
+  left: 0
+  top: 0
+  width: 100%
+  height: 100%
+  pointer-events: none
+  z-index: -1
+
+
+
+
+
+
+[data-theme="dark"]
+  --bg_transparent: transparent
+  --waifutips_bgcolor: rgba(18, 18, 18, .5)
+  --canvas_sakura: none
+  // 夜间模式伪类遮罩层透明
+  #footer::before
+    background: var(--bg_transparent)
+
+  //  看板娘 
+  // 夜间模式
+  #waifu-tips
+    background-color: var(--waifutips_bgcolor)
+
+  // 弹窗夜间模式
+  .snackbar-container p,
+  .snackbar-container .action
+    color: #ffffff !important
+
+  // 季节飘落引入
+  #canvas_sakura
+    display: var(--canvas_sakura)

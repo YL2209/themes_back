@@ -1,0 +1,76 @@
+- const { readmode, translate, darkmode, aside, chat_btn } = theme
+mixin rightsideItem(array)
+  each item in array
+    case item
+      when 'readmode'
+        if is_post() && readmode
+          button#readmode(type="button" title=_p('rightside.readmode_title'))
+            i.iconfont.icon-lianxi
+      when 'translate'
+        if translate.enable
+          button#translateLink(type="button" title=_p('rightside.translate_title'))= translate.default
+      when 'darkmode'
+        if darkmode.enable && darkmode.button
+          a.icon-V.hidden(onclick='switchNightMode()',  title=_p('rightside.night_mode_title'))
+            svg(width='25', height='25', viewBox='0 0 1024 1024')
+              use#modeicon(xlink:href='#icon-moon')
+      when 'hideAside'
+        if aside.enable && aside.button && page.aside !== false
+          button#hide-aside-btn(type="button" title=_p('rightside.aside'))
+            i.iconfont.icon-jiaohuan
+      when 'toc'
+        if showToc
+          button#mobile-toc-button.close(type="button" title=_p("rightside.toc"))
+            i.fas.fa-list-ul
+      when 'chat'
+        if chat_btn
+          button#chat_btn(type="button" title=_p("rightside.chat"))
+            i.fas.fa-sms
+      when 'comment'
+        if commentsJsLoad
+          button#to_comment(type="button" title=_p("rightside.scroll_to_comment") onclick="FixedCommentBtn();")
+            i.iconfont.icon-yaoqing
+      when 'saoswitch'
+        if theme.SAO_Utils.enable
+          button#ranklist_show(type="button" title=_p("rightside.SAOSwitch") onclick="panelAudio();SAOSwitch()")
+            i.iconfont.icon-shezhi
+      when 'saosimge'
+        if theme.Open_Imge.enable
+          button#ranklist_imge(type="button" title=_p("动漫背景图片切换") onclick="imgeAudio();openImage()")
+            i.iconfont.icon-daichuli
+          button#ranklist_imge(type="button" title=_p("动态背景图片切换") onclick="imgeAudio();openImageGif()")
+            i.iconfont.icon-xiangce
+          button#ranklist_imge(type="button" title=_p("简约背景图片切换") onclick="imgeAudio();openImageApi()")
+            i.iconfont.icon-daichuli
+      when 'naokuo_switch'
+        button#naokuo_switch(type="button" title=_p("主题切换") onclick="naokuo_SwitcMode()")
+          i.iconfont.icon-daichuli
+
+#rightside
+  - const { enable, hide, show } = theme.rightside_item_order
+  - const hideArray = enable ? hide && hide.split(',') : ['readmode','translate','darkmode','hideAside','saoswitch','saosimge']
+  - const showArray = enable ? show && show.split(',') : ['toc','chat','comment','naokuo_switch']
+
+  
+  #rightside-config-hide
+    if hideArray
+      +rightsideItem(hideArray)
+  #rightside-config-show
+    if enable
+      if hide
+        button#rightside_config(type="button" title=_p("rightside.setting"))
+          i.fas.iconfont.icon-guanlishezhi.fa-spin
+    else
+      if is_post()
+        if (readmode || translate.enable || (darkmode.enable && darkmode.button))
+          button#rightside_config(type="button" title=_p("rightside.setting"))
+            i.fas.iconfont.icon-guanlishezhi.fa-spin
+      else if translate.enable || (darkmode.enable && darkmode.button)
+        button#rightside_config(type="button" title=_p("rightside.setting"))
+          i.fas.iconfont.icon-guanlishezhi.fa-spin
+
+    if showArray
+      +rightsideItem(showArray)
+
+    button#go-up(type="button" title=_p("rightside.back_to_top"))
+      i.iconfont.icon-shangchuan
