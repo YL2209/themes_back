@@ -1,25 +1,126 @@
 // 自定义主题二
 [naokuo-theme='mode2']
-  --cursor-arrow: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/normal.cur") //箭头
-  --cursor-backrunning: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //后退
-  --cursor-ban: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //禁令
-  --cursor-busy: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //忙碌的
-  --cursor-handwriting: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/No_Disponible.cur") //书写
-  --cursor-help: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //帮助
-  --cursor-link: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //链接
-  --cursor-move: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //移动
-  --cursor-input: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/texto.cur") //输入
+  // 鼠标指针
+  --cursor-arrow: url("/cursor/Launa/Arrow.cur")
+  --cursor-backrunning: url("/cursor/Launa/IBeam.cur")
+  --cursor-ban: url("/cursor/Launa/NO.cur")
+  --cursor-busy: url("/cursor/Launa/UpArrow.cur")
+  --cursor-handwriting: url("/cursor/Launa/Sv.cur")
+  --cursor-help: url("/cursor/Launa/Help.cur")
+  --cursor-link: url("/cursor/Launa/Help.cur")
+  --cursor-move: url("/cursor/Launa/Sall.cur")
+  --cursor-input: url("/cursor/Launa/IBeam.cur")
+  --web_bg: url("https://unpkg.com/naokuo-blog@1.0.17/img/2023-11-08-2.webp") // pc背景
+  --web-mobile_bg: url("https://unpkg.com/naokuo-blog@1.0.17/img/2023-11-08-2.webp") //移动端背景
+  --ark-post-item-border: #3c7199
+  --ark-post-item-background: #3c719975
+  --ark-post-item-screen: #3c7199a3
+  --ark-post-item-font-color: #000
+  --ark-post-item-font-hover: #d97f17
+  --ark-post-item-box-shadow: #e6b18e61
+  --ark-post-item-text-shadow: #3d3835
+  --card-bg: rgba(255,255,255,0.4) //body背景色
+  --font-color: #000000 //字体颜色
+  --white: #ffffff
+  --aside-content: #ffffff8c
+  --hr-line-color: #f00
+  --Waves_shape1:rgba(255,255,255,0.7)
+  --Waves_shape2:rgba(255,255,255,0.5)
+  --Waves_shape3:rgba(255,255,255,0.3)
+  --Waves_shape4:#ffffffe7
+  --snackbar-container:#000000
+  --naokuomenus_item_child:#ffffffb0
+  --naokuotext-bg-hover:#6fa8cd8c
+  --nav_box-shadow: 0 0 0 1px #00ffba69
+  --naokuotheme-color: #ff7800
+  --naokuo_fps_bg:#ffffff75
+  --naokuo_folding-tag: #d0dfe68f
+  --rect_background: #394d636e
+  --mermaid-wrap_text: #000
 
+
+  #aside-content .aside-list > .aside-list-item .content > time,
+  #aside-content .aside-list > .aside-list-item .content > .name
+    color: var(--font-color)
+
+  // 一级菜单居中
+  #nav 
+    .menus_items
+      position: absolute
+      width: max-content
+      left: 50%
+      transform: translateX(-50%)
+      // 子菜单横向展示
+      .menus_item
+        &:hover 
+          .menus_item_child
+            border-radius: 10px
+            background-color: var(--naokuomenus_item_child)
+            box-shadow: var(--nav_box-shadow)
+            display: flex
+        .menus_item_child
+          li
+            &:hover
+              border-radius: 15px
+              background: var(--naokuotext-bg-hover)
+        // 这里的2是代表导航栏的第2个元素，即有子菜单的元素，可以按自己需求修改
+        &:nth-child(5) 
+          .menus_item_child
+            left: -193px
+
+  // 电子时钟布局固定
+  .card-background
+    border-radius: 0px!important
+    box-shadow: none!important
+    #hexo_electric_clock
+      padding: 40px 0px 0px 0px!important  
+    .clock-row
+        color: #fff
+
+  .mermaid-wrap
+    svg
+      border-radius: 10px
+    rect
+      &.background
+        fill: var(--rect_background) !important
+    text
+      fill: var(--mermaid-wrap_text) !important
+
+  // 卡片背景磨砂效果
+  .cardHover,
+  .error404 #error-wrap .error-content,
+  #recent-posts > .recent-post-item,
+  #content-inner #archive
+    +minWidth768()
+      backdrop-filter: blur(5px)
 
   // 夜间模式下设置    自定义主题二
   &[data-theme='dark']
-    --cursor-arrow: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/normal.cur") //箭头
-    --cursor-backrunning: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //后退
-    --cursor-ban: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //禁令
-    --cursor-busy: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //忙碌的
-    --cursor-handwriting: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/No_Disponible.cur") //书写
-    --cursor-help: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //帮助
-    --cursor-link: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //链接
-    --cursor-move: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/ayuda.cur") //移动
-    --cursor-input: url("https://cdn.jsdelivr.net/gh/XXKDB/img_cdn/cursor/texto.cur") //输入
+    --web_bg: url("https://unpkg.com/naokuo-blog@1.0.17/img/2023-11-08-2.webp")
+    --web-mobile_bg: url("https://unpkg.com/naokuo-blog@1.0.17/img/2023-11-08-2.webp")
+    --ark-post-item-border: #1a1e25
+    --ark-post-item-background: #2d32453d
+    --ark-post-item-screen: #3a3d3e8a
+    --ark-post-item-font-color: #fff
+    --ark-post-item-font-hover: #d97f17
+    --ark-post-item-box-shadow: #3a3c3f
+    --ark-post-item-text-shadow: #bd8f74
+    --card-bg: #0f1116bf
+    --font-color: #bbbaba
+    --white: #fff
+    --hr-line-color: #7f5517
+    --snackbar-container :#ffffff
+    --naokuomenus_item_child:#0f151b75
+    --naokuotext-bg-hover:#75808b8a
+    --nav_box-shadow: 0 0 0 1px #00ffba69
+    --naokuo_fps_bg:#00ffb547
+    --naokuo_folding-tag: #b0d5df40
+    --rect_background: #51c4d35c
+    --mermaid-wrap_text: #fff
 
+    // 隐藏时钟背景
+    .card-background 
+        background-color: var(--canvas_sakura)!important
+
+    details[open] > div.content
+      background: none

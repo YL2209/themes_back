@@ -19,11 +19,11 @@
 .cardHover
   border-radius: 8px
   background: var(--card-bg)
-  box-shadow: var(--card-box-shadow)
+  // box-shadow: var(--card-box-shadow)
   transition: all .3s
 
   &:hover
-    box-shadow: var(--card-hover-box-shadow)
+    // box-shadow: var(--card-hover-box-shadow)
 
 .imgHover
   width: 100%
@@ -36,15 +36,15 @@
 
 .postImgHover
   &:hover
-    img
-      opacity: .8
+    .cover
+      opacity: 1
       transform: scale(1.1)
 
-  img
+  .cover
     position: absolute
     width: 100%
     height: 100%
-    opacity: .4
+    opacity: .7
     transition: all .6s, filter 375ms ease-in .2s
     object-fit: cover
 
@@ -71,6 +71,73 @@
       content: ''
       cursor: pointer
       transition: all .3s ease-out
+
+// .custom-hr
+//   position: relative
+//   margin: 40px auto
+//   border: 2px dashed var(--hr-border)
+
+//   if hexo-config('hr_icon.enable')
+//     width: calc(100% - 4px)
+
+//     &:hover
+//       &:before
+//         left: calc(95% - 20px)
+
+//     &:before
+//       position: absolute
+//       top: $hr-icon-top
+//       left: 5%
+//       z-index: 1
+//       color: var(--hr-before-color)
+//       content: $hr-icon
+//       font-size: 20px
+//       line-height: 1
+//       transition: all 1s ease-in-out
+//       @extend .fontawesomeIcon
+// 分割线
+.custom-hr
+
+hr
+  position: relative
+  margin: 40px auto
+  display: block
+  height: 20px
+  width: 100%
+  background: 0px 0px
+  border: none
+
+  if hexo-config('hr_icon.enable')
+    &:hover
+      &:before
+        clip-path polygon(0px 0px, 60px 100%, calc(100% - 30px) 100%, 100% 50%, calc(100% - 15px) 50%, calc(100% - 35px) calc(100% - 5px), 65px calc(100% - 5px), 15px 0px)
+        transition all 0.5s cubic-bezier(0.59, 0.01, 0.48, 1.17) 0s
+        // left: calc(95% - 20px)
+      &:after
+        clip-path polygon(0px 50%, 35px 0px, calc(100% - 60px) 0px, 100% 100%, calc(100% - 15px) 100%, calc(100% - 65px) 5px, 35px 5px, 15px 50%)
+        transition all 0.5s cubic-bezier(0.59, 0.01, 0.48, 1.17) 0s
+
+    &:before    
+      display block
+      content ""
+      height 20px
+      width calc(50% + 60px)
+      left 0px
+      position absolute
+      background linear-gradient(to left,var(--hr-line-color),transparent)
+      clip-path polygon(0px 100%, 60px 0px, calc(100% - 30px) 0px, 100% 50%, calc(100% - 15px) 50%, calc(100% - 35px) 5px, 65px 5px, 15px 100%)
+      transition all 0.5s cubic-bezier(0.59, 0.01, 0.48, 1.17) 0s
+
+    &:after
+      display block
+      content ""
+      height 20px
+      width calc(50% + 60px)
+      right 0px
+      position absolute
+      background linear-gradient(to right,var(--hr-line-color),transparent)
+      clip-path polygon(0px 50%, 35px 100%, calc(100% - 60px) 100%, 100% 0px, calc(100% - 15px) 0px, calc(100% - 65px) calc(100% - 5px), 35px calc(100% - 5px), 15px 50%)
+      transition all 0.5s cubic-bezier(0.59, 0.01, 0.48, 1.17) 0s
 
 maxWidth600()
   @media screen and (max-width: 600px)
@@ -110,7 +177,7 @@ if hexo-config('enter_transitions')
   #footer
     animation: bottom-top 1s
 
-  #page-header
+  #page-header:not(.full_page)
     animation: header-effect 1s
 
   #site-title,
@@ -131,7 +198,7 @@ if hexo-config('enter_transitions')
     &.open
       for i in 1 2 3 4
         > :nth-child({i})
-          animation: sidebarItem (i / 5)s
+          animation: sidebarItem (i / 5s)
 
 .scroll-down-effects
   animation: scroll-down-effect 1.5s infinite
@@ -145,16 +212,16 @@ if hexo-config('avatar.effect') == true
 
 @keyframes scroll-down-effect
   0%
-    top: 0
     opacity: .4
+    transform: translate(0, 0)
 
   50%
-    top: -16px
     opacity: 1
+    transform: translate(0, -16px)
 
   100%
-    top: 0
     opacity: .4
+    transform: translate(0, 0)
 
 @keyframes header-effect
   0%
@@ -174,13 +241,13 @@ if hexo-config('avatar.effect') == true
 
 @keyframes bottom-top
   0%
-    margin-top: 50px
     opacity: 0
+    transform: translateY(50px)
 
   100%
-    margin-top: 0
     opacity: 1
-
+    transform: translateY(0)
+    
 @keyframes titleScale
   0%
     opacity: 0

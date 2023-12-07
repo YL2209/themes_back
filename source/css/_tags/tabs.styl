@@ -1,70 +1,103 @@
+:root
+  --naokuo-tabs--shadow-border: 0 8px 16px -4px #2c2d300c
+  --style-border-always: 1px solid var(--naokuo-tabs--card-border)
+  --style-border-hover-always: 1px solid var(--naokuo-tabs--main)
+  --naokuo-tabs--white: #fff
+
+[data-theme="light"]
+  --naokuo-tabs--secondbg: #f7f7f9
+  --naokuo-tabs--card-bg: transparent
+  --naokuo-tabs--fontcolor: #363636
+  --naokuo-tabs--card-border: #e3e8f7
+  --naokuo-tabs--main: #425AEF
+  --naokuo-tabs--background: #f7f9fe
+
+[data-theme="dark"]
+  --naokuo-tabs--secondbg: #21232a
+  --naokuo-tabs--card-bg: transparent
+  --naokuo-tabs--fontcolor: #f7f7fa
+  --naokuo-tabs--card-border: #42444a
+  --naokuo-tabs--main: #f2b94b
+  --naokuo-tabs--background: #18171d
 
 #article-container
   .tabs
     position: relative
     margin: 0 0 20px
-    border-right: 1px solid var(--tab-border-color)
-    border-bottom: 1px solid var(--tab-border-color)
-    border-left: 1px solid var(--tab-border-color)
+    border: 3px solid var(--naokuo-tabs--secondbg)
+    margin: 1rem 0 !important
+    border-radius: 12px
+    overflow: hidden
+    box-shadow: var(--naokuo-tabs--shadow-border)
+    background: var(--naokuo-tabs--card-bg)
+    padding: 8px
+
+    .tab-item-content
+      color: var(--naokuo-tabs--fontcolor)
 
     > .nav-tabs
       display: flex
       flex-wrap: wrap
+      justify-content: center
       margin: 0
-      padding: 0
-      background: var(--tab-botton-bg)
+      padding: 16px
+      background: var(--naokuo-tabs--card-bg)
 
       > .tab
-        margin: 0
-        padding: 0
-        list-style: none
+        padding: 8px 18px
+        background: var(--naokuo-tabs--secondbg)
+        color: var(--naokuo-tabs--fontcolor)
+        line-height: 1
+        transition: all .4s
+        margin: 4px
+        border: var(--style-border-always)
+        border-radius: 8px
 
-        +maxWidth768()
-          flex-grow: 1
-
-        button
-          display: block
-          padding: 8px 18px
-          width: 100%
-          border-top: 2px solid var(--tab-border-color)
-          background: var(--tab-botton-bg)
-          color: var(--tab-botton-color)
-          line-height: 2
-          transition: all .4s
-
-          i
-            width: 1.5em
+        i
+          width: 1.5em
 
         &.active
-          button
-            border-top: 2px solid $tab-active-border-color
-            background: var(--tab-button-active-bg)
-            cursor: default
+          border: var(--style-border-hover-always)
+          background: var(--naokuo-tabs--background)
+          border-radius: 8px
+          cursor: default
 
         &:not(.active)
-          button
-            &:hover
-              border-top: 2px solid var(--tab-button-hover-bg)
-              background: var(--tab-button-hover-bg)
+          &:hover
+            background: var(--naokuo-tabs--main)
+            color: var(--naokuo-tabs--white)
+            transition: .3s
+            border: var(--style-border-hover-always)
+
+      &.no-default
+        & ~ .tab-to-top
+          display: none
 
     > .tab-contents
       .tab-item-content
         position: relative
         display: none
-        padding: 36px 24px
+        background: var(--naokuo-tabs--background)
+        border: var(--style-border-always)
+        padding: 1.2rem 1.2rem
+        border-radius: 8px
 
         +maxWidth768()
           padding: 24px 14px
 
         &.active
           display: block
-          animation: tabshow .5s
 
-    .tab-to-top
-      position: relative
-      display: block
-      margin: 0 0 0 auto
-      color: $tab-to-top-color
+    > .tab-to-top
+      padding: 0 16px 10px 0
+      width: 100%
+      text-align: right
+
+      button
+        color: #99a9bf
+
+        &:hover
+          color: #425AEF
 
 @keyframes tabshow
   0%

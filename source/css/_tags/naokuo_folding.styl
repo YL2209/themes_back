@@ -1,0 +1,192 @@
+:root
+  --naokuo-folding--shadow-border: 0 8px 16px -4px #2c2d300c
+  --style-border-always: 1px solid var(--naokuo-folding--card-border)
+  --style-border-hover-always: 1px solid var(--naokuo-folding--main)
+  --naokuo-folding--white: #fff
+
+[data-theme="light"]
+  --naokuo-folding--secondbg: #f7f7f9
+  --naokuo-folding--card-bg: #fff
+  --naokuo-folding--fontcolor: #363636
+  --naokuo-folding--card-border: #e3e8f7
+  --naokuo-folding--main: #425AEF
+  --naokuo-folding--background: #f7f9fe
+
+[data-theme="dark"]
+  --naokuo-folding--secondbg: #21232a
+  --naokuo-folding--card-bg: #1d1e22
+  --naokuo-folding--fontcolor: #f7f7fa
+  --naokuo-folding--card-border: #42444a
+  --naokuo-folding--main: #f2b94b
+  --naokuo-folding--background: #18171d
+
+trans($time = 0.28s)
+  transition: all $time ease
+  -moz-transition: all $time ease
+  -webkit-transition: all $time ease
+  -o-transition: all $time ease
+
+bgcolor($c, $mix = 10)
+  return mix($c, #fff, $mix)
+
+details[open]:not(.tk-admin-config-group) 
+  background: var(--naokuo-folding--card-bg)
+  
+
+details.folding-tag
+  display: block
+  padding: 16px
+  margin: 1em 0
+  border-radius: 4px
+  font-size: var(--global-font-size)
+  transition: border 0s ease!important;
+  trans()
+  summary
+    cursor: pointer
+    padding: 16px
+    margin: 0 - 16px
+    border-radius: 4px
+    color: alpha(#444, .7)
+    font-size: .875rem!important
+    font-weight: bold
+    position: relative
+    line-height: normal
+    >
+      p,h1,h2,h3,h4,h5,h6
+        display: inline
+        border-bottom: none !important
+    &:hover
+      cursor: pointer;
+      background: var(--naokuo-folding--main)!important;
+      color: var(--naokuo-folding--white)!important;
+      transition: .3s;
+      box-shadow: var(--naokuo-folding-shadow-main)
+      &::marker
+        color: var(--naokuo-folding--white)
+      &:after
+        position: absolute
+        content: '+'
+        text-align: center
+        top: 50%
+        transform: translateY(-50%)
+        right: 16px
+
+  // border: 1px solid #f6f6f6
+  >summary
+    background: var(--naokuo-folding--card-bg)
+    border: var(--style-border-always)!important;
+    border-radius: 14px!important;
+    box-shadow: var(--naokuo-folding--shadow-border);
+    color: var(--font-color)!important;
+    user-select: none
+    &::marker
+      color: var(--naokuo-folding--main);
+      font-size: 16px
+    &::before
+      content: " ";
+      margin-right: 2px
+  &[purple]
+    border-color: bgcolor(#d017ee)
+    >summary
+      background: bgcolor(#d017ee)
+  &[blue]
+    border-color: bgcolor(#2196f3)
+    >summary
+      background: bgcolor(#2196f3)
+  &[cyan]
+    border-color: bgcolor(#1BCDFC)
+    >summary
+      background: bgcolor(#1BCDFC)
+  &[green]
+    border-color: bgcolor(#3DC550)
+    >summary
+      background: bgcolor(#3DC550)
+  &[yellow]
+    border-color: bgcolor(#FFBD2B)
+    >summary
+      background: bgcolor(#FFBD2B)
+  &[orange]
+    border-color: bgcolor(#ec7616)
+    >summary
+      background: bgcolor(#ec7616)
+  &[red]
+    border-color: bgcolor(#FE5F58)
+    >summary
+      background: bgcolor(#FE5F58)
+
+details.folding-tag[open]
+  border-radius: 15px
+  border-color: var(--naokuo-folding--main)
+  border: 1px solid var(--naokuo-folding--main)
+  >summary
+    border-top: none!important
+    border-left: none!important
+    border-right: none!important
+    margin-bottom: 0
+    &::marker
+      color: var(--naokuo-folding--white)
+    &:hover
+      &:after
+        content: '-'    
+  &[purple]
+    border-color: alpha(#d017ee, .3)
+    >summary
+      border-bottom-color: alpha(#d017ee, .3)
+  &[blue]
+    border-color: alpha(#2196f3, .3)
+    >summary
+      border-bottom-color: alpha(#2196f3, .3)
+  &[cyan]
+    border-color: alpha(#1BCDFC, .3)
+    >summary
+      border-bottom-color: alpha(#1BCDFC, .3)
+  &[green]
+    border-color: alpha(#3DC550, .3)
+    >summary
+      border-bottom-color: alpha(#3DC550, .3)
+  &[yellow]
+    border-color: alpha(#FFBD2B, .3)
+    >summary
+      border-bottom-color: alpha(#FFBD2B, .3)
+  &[orange]
+    border-color: alpha(#ec7616, .3)
+    >summary
+      border-bottom-color: alpha(#ec7616, .3)
+  &[red]
+    border-color: alpha(#FE5F58, .3)
+    >summary
+      border-bottom-color: alpha(#FE5F58, .3)
+
+  >div.content
+    border-radius: 0 0 16px 16px
+    padding: 16px
+    margin: 0 - 16px
+    margin-top: 0
+    p>a:hover
+      text-decoration: underline
+    >
+      p,.tabs,ul,ol,.highlight,.note,details
+        &:first-child
+          margin-top: 0
+        &:last-child
+          margin-bottom: 0
+
+li 
+  details.folding-tag
+    border-radius: 8px
+    summary
+      border-radius: 8px
+
+[data-theme="dark"]
+  details[open]
+    & > div
+      &.content
+        padding 16px
+        margin -16px
+        margin-top 0
+        background: transparent;
+        color rgba(255, 255, 255, 0.6)
+  details
+    & > summary
+      filter brightness(1)
+      background: var(--naokuo-folding--card-bg) !important;

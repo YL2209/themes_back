@@ -1,0 +1,67 @@
+/* 设置风车颜色 */
+// #content-inner
+.layout 
+  #post
+    .post-content 
+      h1
+        &:before
+          color: #ef50a8
+          // margin-left: -0.3rem
+          // font-size: 2rem
+          // margin-top: -0.23rem
+      h2
+        &:before
+          color: #fb7061
+          // margin-left: -0.3rem
+          // font-size: 1.5rem
+          // margin-top: -0.12rem
+      h3
+        &:before
+          color: #ffbf00
+          // margin-left: -0.3rem
+          // font-size: 1.3rem
+          // margin-top: -0.09rem
+      h4
+        &:before
+          color: #a9e000
+          // margin-left: -0.3rem
+          // font-size: 1rem
+          // margin-top: -0.09rem
+      h5
+        &:before
+          color: #57c850
+          // margin-left: -0.3rem
+          // font-size: 0.96rem
+          // margin-top: 0rem
+      h6
+        &:before
+          color: #5ec1e0
+          // margin-left: -0.3rem
+          // font-size: 0.75rem
+          // margin-top: 0rem
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6
+        &:hover
+          color: var(--naokuotheme-color)
+        &:before
+          -webkit-animation: naokuoccc 2s linear infinite
+          animation: naokuoccc 2s linear infinite
+          
+@-webkit-keyframes naokuoccc
+  0%
+    -webkit-transform: rotate(0deg)
+    transform: rotate(0deg)
+  to
+    -webkit-transform: rotate(-1turn)
+    transform: rotate(-1turn)
+@keyframes naokuoccc
+  0%
+    -webkit-transform: rotate(0deg)
+    transform: rotate(0deg)
+  to
+    -webkit-transform: rotate(-1turn)
+    transform: rotate(-1turn)

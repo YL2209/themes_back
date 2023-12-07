@@ -1,4 +1,4 @@
-if theme.newest_comments.enable && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
+if theme.newest_comments.enable && theme.comments.use && !['Livere','Facebook Comments','Giscus'].includes(theme.comments.use[0])
   input#card-newest-comments-anchor.card-widget-visible(type="radio" name="card-widget-visible" value="card-newest-comments")
   .card-widget#card-newest-comments
     .item-headline

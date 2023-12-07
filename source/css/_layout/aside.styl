@@ -28,45 +28,45 @@
         &:not(#card-toc)
           display: none
 
-  .card-info
-    .author-info
-      &__name
-        font-weight: 500
-        font-size: 1.57em
+  // .card-info
+  //   .author-info
+  //     &__name
+  //       font-weight: 500
+  //       font-size: 1.57em
 
-      &__description
-        margin-top: -.42em
+  //     &__description
+  //       margin-top: -.42em
 
-    .card-info-data
-      margin: 14px 0 4px
+  //   .card-info-data
+  //     margin: 14px 0 4px
 
-    .card-info-social-icons
-      margin: 6px 0 -6px
+  //   .card-info-social-icons
+  //     margin: 6px 0 -6px
 
-      .social-icon
-        margin: 0 10px
-        color: var(--font-color)
-        font-size: 1.4em
+  //     .social-icon
+  //       margin: 0 10px
+  //       color: var(--font-color)
+  //       font-size: 1.4em
 
-      i
-        transition: all .3s
+  //     i
+  //       transition: all .3s
 
-        &:hover
-          transform: rotate(540deg)
+  //       &:hover
+  //         transform: rotate(360deg)
 
-    #card-info-btn
-      display: block
-      margin-top: 14px
-      background-color: var(--btn-bg)
-      color: var(--btn-color)
-      text-align: center
-      line-height: 2.4
+  //   #card-info-btn
+  //     display: block
+  //     margin-top: 14px
+  //     background-color: var(--btn-bg)
+  //     color: var(--btn-color)
+  //     text-align: center
+  //     line-height: 2.4
 
-      &:hover
-        background-color: var(--btn-hover-color)
+  //     &:hover
+  //       background-color: var(--btn-hover-color)
 
-      span
-        padding-left: 10px
+  //     span
+  //       padding-left: 10px
 
   .item-headline
     padding-bottom: 6px
@@ -115,7 +115,7 @@
         width: w = 4.2em
         height: w
 
-        & > img
+        :first-child
           @extend .imgHover
 
       .content
@@ -179,6 +179,13 @@
 
       > .parent
         > a
+          &.expand
+            i
+              transform: rotate(-90deg)
+
+            & + .child
+              display: block
+
           .card-category-list
             &-name
               width: 70% !important
@@ -187,15 +194,12 @@
               width: calc(100% - 70% - 20px)
               text-align: right
 
-        i
-          float: right
-          margin-right: -.5em
-          padding: .5em
-          transition: transform .3s
-          transform: rotate(0)
-
-          &.expand
-            transform: rotate(-90deg)
+          i
+            float: right
+            margin-right: -.5em
+            padding: .5em
+            transition: transform .3s
+            transform: rotate(0)
 
         if hexo-config('aside.card_categories.expand') == false
           > .child
@@ -220,15 +224,18 @@
 
     +maxWidth900()
       position: fixed
-      right: -100%
+      right: 55px
       bottom: 30px
       z-index: 100
       max-width: $toc-mobile-maxWidth
       max-height: calc(100% - 60px)
       width: $toc-mobile-width
-      opacity: 0
-      transition: initial
+      transition: none
+      transform: scale(0)
       transform-origin: right bottom
+
+      &.open
+        transform: scale(1)
 
     .toc-percentage
       float: right
@@ -242,7 +249,8 @@
       overflow-y: overlay
       margin: 0 -24px
       max-height: calc(100vh - 120px)
-
+      width: calc(100% + 48px)
+      
       +maxWidth900()
         max-height: calc(100vh - 140px)
 
@@ -252,7 +260,7 @@
         & > .toc-item > .toc-child
           margin-left: 10px
           padding-left: 10px
-          border-left: 1px solid var(--dark-grey)
+          // border-left: 1px solid var(--dark-grey)
 
       &:not(.is-expand)
         .toc-child
@@ -288,11 +296,11 @@
           color: $theme-color
 
         &.active
-          background: $theme-toc-color
-          color: $toc-active-color
+          // background: $theme-toc-color
+          // color: $toc-active-color
 
-  :only-child
-    > .card-widget
+  .sticky_layout:only-child
+    > :first-child
       margin-top: 0
 
   .card-more-btn

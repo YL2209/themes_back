@@ -13,10 +13,6 @@ if hexo-config('readmode')
     --exit-btn-hover: darken(#C0C0C0, 20)
     --pseudo-hover: none
 
-    #post-info .post-title {
-        color: var(--text-highlight-color)
-    }
-
   [data-theme='dark']
     .read-mode
       --font-color: rgba(255, 255, 255, .7)
@@ -58,8 +54,7 @@ if hexo-config('readmode')
       display: none
 
     #page-header.post-bg
-      background-color: transparent
-      background-image: none !important
+      background: none !important
 
       &:before
         opacity: 0
@@ -110,7 +105,7 @@ if hexo-config('readmode')
           color: var(--font-color) !important
 
         .hljs
-          background: var(-highlight-bg) !important
+          background: var(--highlight-bg) !important
 
       h1,
       h2,
@@ -150,18 +145,7 @@ if hexo-config('readmode')
           background: transparent
 
           > .tab
-            border-bottom: 0
-
-            button
-              border-top: none !important
-              background: transparent
-
-              &:hover
-                background: none !important
-
-            &.active
-              button
-                text-decoration: underline
+            border-top: none !important
 
         > .tab-contents .tab-item-content.active
           animation: none

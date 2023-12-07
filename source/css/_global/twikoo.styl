@@ -1,0 +1,126 @@
+:root
+  --naokuo-twikoo-textarea-bg: $twikoo-bg
+
+[data-theme="dark"]
+  --naokuo-twikoo-textarea-bg: $twikoo-darkbg
+
+
+#twikoo
+  .tk-submit
+    .tk-input
+      &.el-textarea
+        .el-textarea__inner
+          min-height: 14.75em !important
+          background-image: var(--naokuo-twikoo-textarea-bg)
+
+          &:focus
+            background-image: none!important
+
+    .tk-avatar
+      height: 3em
+      width: 3em
+      &.tk-has-avatar
+          background-color: unset!important
+
+      .tk-avatar-img
+        height: 3em
+        width: 3em
+        clip-path: polygon(50% 0%, 95.5% 25%, 95.5% 75%, 50% 100%, 4.5% 75%, 4.5% 25%)
+
+  .tk-comment
+    *
+      font-size: 16px!important
+
+    .tk-main
+      .tk-row
+        justify-content: flex-start
+
+    .tk-avatar
+      height: 3em
+      width: 3em
+      margin: 0 10px
+      &.tk-has-avatar
+          background-color: unset!important
+
+      .tk-avatar-img
+        height: 3em
+        width: 3em
+        clip-path: polygon(50% 0%, 95.5% 25%, 95.5% 75%, 50% 100%, 4.5% 75%, 4.5% 25%)
+
+@media screen and (max-width: 600px)
+  .tk-comment
+    .tk-main
+      .tk-extras
+        display:none
+
+      .tk-replies
+        left: -50px
+
+      .tk-content
+        position: relative
+        padding: 5px 5px 5px 10px
+        line-height: 1.2
+        width: fit-content
+        max-width: 100%
+        background: linear-gradient(225deg,var(--ark-left-border-color),var(--ark-left-border-color) 10px,transparent 10px),linear-gradient(45deg,var(--ark-left-border-color),var(--ark-left-border-color) 10px,transparent 10px),repeating-linear-gradient(135deg,rgba(66,177,226,.6),transparent .2px)
+        border-width: 2px 2px 7px 2px
+        border-style: solid
+        border-color: var(--ark-left-border-color)
+        clip-path: polygon(0 0,calc(100% - 15px) 0,100% 15px,100% 100%,calc(100% - 80px) 100%,calc(100% - 85px) calc(100% - 5px),15px calc(100% - 5px),0 calc(100% - 20px))
+
+@media screen and (min-width: 600px)
+  .tk-comment
+    &.tk-master
+      flex-direction: row-reverse
+      justify-content: flex-start  
+      .tk-main
+        display: flex
+        flex-direction: column
+        align-items: flex-end
+
+        &>.tk-row
+          justify-content: flex-end
+          padding: 0 0 0 80px!important
+          clip-path: polygon(100% 0,80px 0,50px calc(100% - 5px),5px calc(100% - 5px),0 100%,100% 100%)!important
+
+          .tk-meta
+            display: flex
+            flex-direction: row-reverse
+            align-items: center
+            justify-content: space-between    
+
+        .tk-content
+          position: relative
+          padding: 15px 30px 15px 15px
+          line-height: 1.5
+          margin: 0 0 0 80px
+          border-width: 2px 2px 7px 2px
+          border-style: solid
+          background: linear-gradient(-225deg,var(--ark-left-border-color),var(--ark-left-border-color) 10px,transparent 10px),linear-gradient(-45deg,var(--ark-left-border-color),var(--ark-left-border-color) 10px,transparent 10px),repeating-linear-gradient(45deg,rgba(66,177,226,.6),transparent .9px)
+          clip-path: polygon(100% 0,15px 0,0 15px,0 100%,80px 100%,85px calc(100% - 5px),calc(100% - 15px) calc(100% - 5px),100% calc(100% - 20px))
+
+    .tk-main
+      &>.tk-row
+        justify-content: flex-start
+        background: var(--ark-left-border-color)
+        width: fit-content
+        padding: 0 80px 0 10px
+        clip-path: polygon(0 0,calc(100% - 80px) 0,calc(100% - 50px) calc(100% - 5px),calc(100% - 5px) calc(100% - 5px),100% 100%,0 100%)
+
+      .tk-content
+        position: relative
+        padding: 5px 5px 5px 10px
+        width: fit-content
+        min-width: 350px
+        max-width: 100%
+        background: linear-gradient(225deg,var(--ark-left-border-color),var(--ark-left-border-color) 10px,transparent 10px),linear-gradient(45deg,var(--ark-left-border-color),var(--ark-left-border-color) 10px,transparent 10px),repeating-linear-gradient(135deg,rgba(66,177,226,.6),transparent .9px)
+        margin: 0 80px 0 0
+        border-width: 2px 2px 7px 2px
+        border-style: solid
+        border-color: var(--ark-left-border-color)
+        clip-path: polygon(0 0,calc(100% - 15px) 0,100% 15px,100% 100%,calc(100% - 80px) 100%,calc(100% - 85px) calc(100% - 5px),15px calc(100% - 5px),0 calc(100% - 20px))
+  .tk-comments
+    .OwO 
+      .OwO-body
+        left: 25px
+        top: -1em

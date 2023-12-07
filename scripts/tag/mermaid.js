@@ -8,10 +8,10 @@
 
 const { escapeHTML } = require('hexo-util')
 
-function mermaid (args, content) {
+const mermaid = (args, content) => {
   return `<div class="mermaid-wrap"><pre class="mermaid-src" hidden>
   ${escapeHTML(content)}
   </pre></div>`
 }
 
-hexo.extend.tag.register('mermaid', mermaid, { ends: true })
+hexo.extend.tag.register('画图', mermaid, { ends: true })

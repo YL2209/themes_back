@@ -1,0 +1,74 @@
+:root
+  --naokuo-toc--border-radius: 8px
+
+[data-theme="dark"]
+  --naokuo-toc--hovertext: #0a84ff
+  --naokuo-toc--card-bg: #39393978 //文章目录字体背景
+  --naokuo-toc--lighttext: #f2b94b //文章目录字体颜色
+  --naokuo-toc--secondtext: #a1a2b8
+
+[data-theme="light"]
+  --naokuo-toc--hovertext: #425aef
+  --naokuo-toc--card-bg: #ffffff80
+  --naokuo-toc--lighttext: #f2b94b
+  --naokuo-toc--white: #fff
+  --naokuo-toc--secondtext: rgba(60, 60, 67, 0.8)
+
+// 文章toc
+#aside-content
+  #card-toc
+    span
+      &.toc-number
+        display: none    
+    &:hover 
+      .toc-content 
+        .toc-link
+          &:not(.active) 
+            span
+              filter: blur(0)
+              opacity: 1
+
+    .toc-content
+      overflow-y: auto    
+
+      .toc-link
+        line-height: 1.2
+        padding: 8px
+        border-left: 0 solid transparent
+        border-radius: 12px
+        color: var(--naokuo-toc--secondtext)
+        cursor: default        
+        &.active
+          border-radius: var(--naokuo-toc--border-radius)
+          line-height: 1.2
+          border-radius: 12px
+          border-left-color: var(--naokuo-toc--hovertext)
+          background-color: var(--naokuo-toc--card-bg)
+          color: var(--naokuo-toc--lighttext)
+          font-weight: 700
+          font-size: 20px     
+        &:not(.active) 
+          span
+            opacity: 0.6
+            cursor: pointer
+            filter: blur(1px)
+            transition: 0.3s
+            &:hover
+              color: var(--naokuo-toc--lighttext)
+
+      .toc-item
+        &.active 
+          .toc-link
+            opacity: 1
+            border-radius: 8px
+
+[data-theme="dark"]
+  .toc 
+    .toc-item
+      &.active 
+        .toc-link 
+          .toc-text
+            color: var(--naokuo-toc--white)
+
+
+

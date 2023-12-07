@@ -1,5 +1,4 @@
 if theme.aside.card_author.enable
-  //- input#card-info-anchor.card-widget-visible(type="radio" name="card-widget-visible" value="card-info")
   .card-widget.card-info
     .is-center
       .avatar-img
@@ -25,4 +24,4 @@ if theme.aside.card_author.enable
   
     if(theme.social)
         .card-info-social-icons.is-center
-          !=fragment_cache('social', function(){return partial('includes/header/social')}) 
+          !=partial('includes/header/social', {}, {cache: true})

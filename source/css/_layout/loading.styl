@@ -22,5 +22,9 @@ if hexo-config('preloader.enable')
     @import './_load_style/doodle'
   else if hexo-config('preloader.load_style') == 'linkstart'
     @import './_load_style/linkstart'
+  else if hexo-config('preloader.load_style') == 'fullpage'
+    @import './_load_style/fullpage-loading'
   else
     @import './_load_style/default'
+
+      
