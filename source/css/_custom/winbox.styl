@@ -1,0 +1,331 @@
+// root伪类指定全局颜色(照抄)
+:root
+  // 主题色按钮颜色 
+  --color-red: rgb(241, 71, 71)
+  --color-orange: rgb(241, 162, 71)
+  --color-yellow: rgb(241, 238, 71)
+  --color-green: rgb(57, 197, 187)
+  --color-blue: rgb(102, 204, 255)
+  --color-heoblue: rgb(66, 90, 239)
+  --color-darkblue: rgb(97, 100, 159)
+  --color-purple: rgb(179, 71, 241)
+  --color-pink: rgb(237, 112, 155)
+  --color-black: rgb(0, 0, 0)
+
+  // --theme-color: rgb(57, 197, 187)
+
+
+// winbox样式(这块照抄即可)
+#meihuaBox
+  border-radius: 12px
+  overflow: hidden
+
+  .wb-header
+    .wb-min
+      background-position: center    
+      // +maxWidth768()
+      //   display: none
+        
+    .wb-full
+      display: none
+
+
+  .wb-body
+    background-color: #d8e3e7
+    &::-webkit-scrollbar
+      display: none
+
+    .settings 
+        
+      .range
+        position: relative
+        width: 300px
+        margin: 20px 0px 32px 10px
+
+        // 透明度滑块 
+        input[type="range"]
+          display: block
+          -webkit-appearance: none
+          background-color: #bdc3c7
+          width: 100%
+          height: 5px
+          border-radius: 3px
+          margin: 0 auto
+          outline: 0
+          &:hover
+            cursor: var(--cursor-link),auto!important
+
+          &::-webkit-slider-thumb
+            -webkit-appearance: none
+            background-color: var(--ark-post-item-border)
+            width: 15px
+            height: 15px
+            border-radius: 50%
+            z-index: 100
+
+        .rang_width
+          position: absolute
+          top: 0px
+          left: 0px
+          background: var(--ark-post-item-border)
+          height: 5px
+          border-radius: 2px 0 0 2px
+
+      // 开关按钮 
+      input[type="checkbox"]
+        width: 37px
+        height: 20px
+        position: relative
+        border: 1px solid #000000
+        background-color: #fdfdfd
+        border-radius: 12px
+        background-clip: content-box
+        display: inline-block
+        -webkit-appearance: none
+        appearance: none
+        user-select: none
+        outline: none
+        margin: 5px 0px 0 10px
+        &:hover
+          cursor: var(--cursor-link),auto!important
+
+        &:before
+          content: ""
+          width: 14px
+          height: 14px
+          position: absolute
+          top: 2px
+          left: 3px
+          border-radius: 10px
+          background-color: #000
+          transition: left 0.2s
+
+        &:checked
+          background-color: var(--ark-post-item-border)
+          border-color: var(--ark-post-item-border)
+
+          &:before
+            left: 19px
+            background-color: white
+            transition: left 0.2s
+
+          &:hover
+            opacity: 0.8
+
+        &:active
+          background-color: #666666
+          border-color: #666666
+
+          &::before 
+            background-color: white
+
+      // 调节字体显示栏目
+      #swfs
+        display: flex
+        flex-wrap: wrap
+
+        .swf
+          padding: 10px
+          font-size: 20px
+          background-color: white
+          border-radius: 10px
+          margin: 10px
+
+          &:hover
+            text-decoration: none
+            background: var(--text-bg-hover)
+            cursor: var(--cursor-link),auto!important
+
+      // 主题色选择按钮
+      input[name="colors"]
+        margin-right: 15px
+        min-width: 1rem
+        height: 1rem
+        appearance: none
+        -webkit-appearance: none
+        border-radius: 50%
+        &:hover
+          cursor: var(--cursor-link),auto!important
+
+        &#red
+          border: 3px solid var(--color-red)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-red)
+            background-color: var(--color-red)
+
+        &#orange
+          border: 3px solid var(--color-orange) 
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-orange)
+            background-color: var(--color-orange)
+
+        &#yellow
+          border: 3px solid var(--color-yellow)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-yellow)
+            background-color: var(--color-yellow)
+
+        &#green
+          border: 3px solid var(--color-green)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-green)
+            background-color: var(--color-green)
+
+        &#blue
+          border: 3px solid var(--color-blue)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-blue)
+            background-color: var(--color-blue)
+
+        &#purple
+          border: 3px solid var(--color-purple)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-purple)
+            background-color: var(--color-purple)
+
+        &#pink
+          border: 3px solid var(--color-pink)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-pink)
+            background-color: var(--color-pink)
+
+        &#heoblue
+          border: 3px solid var(--color-heoblue)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-heoblue)
+            background-color: var(--color-heoblue)
+
+        &#darkblue
+          border: 3px solid var(--color-darkblue)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-darkblue)
+            background-color: var(--color-darkblue)
+
+        &#black
+          border: 3px solid var(--color-black)
+          &:checked
+            box-shadow: 0 0 0 2px #fff inset
+            border-radius: 50%
+            border: 3px solid var(--color-black)
+            background-color: var(--color-black)
+
+      .bgbox
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+
+      .pimgbox,
+      .imgbox,
+      .box
+        height: 100px
+        width: 166px
+        margin: 10px
+        border-radius: 10px
+        background-size: cover
+        &:hover
+          scale: 1.05
+          transition: all .3s ease-in-out
+        +maxWidth768()
+          height: 73px
+          width: 135px
+
+      .pimgbox
+        height: 240px
+        +maxWidth768()
+          height: 205px
+
+      .imgbox
+        height: 95px
+
+      .apiBox
+        &::before
+          position: relative
+          color: #f0f8ff
+          border-radius: 5px
+          top: 30%
+          padding: 2px 5px
+          background: #00000090
+
+      // Bing壁纸
+      #naokuo_bingDayBox
+        &::before
+          left: 18%
+          content: "必应每日壁纸"
+
+      #naokuo_CiYuanBox
+        &::before
+          left: 30%
+          content: "次元API"
+
+      #naokuo_chaojiTuBox
+        &::before
+          left: 30%
+          content: "超级小兔"
+
+      #naokuo_BaoLuoBox
+        &::before
+          left: 30%
+          content: "保罗 API "
+
+      #naokuo_LoLiBox
+        &::before 
+          left: 30%
+          content: "API"
+
+      #naokuo_SuYanBox
+        &::before
+          left: 30%
+          content: "素颜API"
+
+      #naokuo_ybaBox
+        &::before 
+          left: 30%
+          content: "御坂API"
+
+      #naokuo_CiYuanBox, 
+      #naokuo_bingDayBox, 
+      #naokuo_BaoLuoBox,
+      #naokuo_chaojiTuBox,
+      #naokuo_LoLiBox,
+      #naokuo_SuYanBox,
+      #naokuo_ybaBox
+        &:hover
+          text-decoration: none
+
+
+      // 背景图片链接输入框placeholder
+      input#pic-link::-webkit-input-placeholder
+        color: rgb(150, 150, 150)
+
+      input#pic-link
+        width: 82%
+        border-radius: 30px
+        border: 1px solid var(--ark-post-item-border)
+        padding: 5px 10px 5px 10px
+        line-height: 2
+        outline: 1px solid var(--ark-post-item-border)
+
+
+[data-theme="dark"] 
+  #meihuaBox
+    .wb-body
+      background: #333
+

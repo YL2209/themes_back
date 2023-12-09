@@ -1,0 +1,155 @@
+// 禁止复制 
+body
+  user-select: none
+// 代码允许复制 
+#article-container pre
+  user-select: text
+
+maxWidth1000()
+  @media screen and (max-width: 1000px)
+    {block}
+
+// 一图流设置
+//  文章头部图片透明 
+.post
+  .post-bg
+    background-color: transparent !important
+    background-image: none !important
+// 页脚透明 
+#footer:before
+  background-color: transparent
+
+//  弹窗魔改 
+.snackbar-container
+  // border-radius: 5px !important
+  -webkit-clip-path: polygon(47% 0, 52% 13%, 95% 15%, 100% 32%, 100% 63%, 94% 100%, 6% 100%, 0 65%, 0 33%, 4% 0)
+  clip-path: polygon(47% 0, 52% 13%, 95% 15%, 100% 32%, 100% 63%, 94% 100%, 6% 100%, 0 65%, 0 33%, 4% 0)
+  //  color: #fff; 
+.snackbar-container p
+  font-weight: 800!important
+  color: var(--snackbar-container)!important
+  //  font-weight: 600; 
+
+#article-container a 
+  color: var(--font-color) !important
+
+#pagination.pagination-post
+  border-radius: 20px
+
+.article-sort-item-img 
+  border-radius: 10px
+
+// 隐藏背景音乐图标 
+#Audio-Background
+  display: none
+
+
+.card-background
+  #hexo_electric_clock
+    // 电子时钟字体大小
+    font-size: 16px  
+
+
+
+// 主页侧边栏鼠标悬浮选择
+#aside-content .card-archives ul.card-archive-list>.card-archive-list-item a:hover,
+#aside-content .card-categories ul.card-category-list>.card-category-list-item a:hover
+  border-radius: 15px
+  background-color: var(--aside-content) !important
+
+// 在滚动到顶按钮中显示滚动百分比颜色
+span.scroll-percent
+  color: var(--ark-post-item-font-color)
+
+// 所有图片圆角
+.imgHover, 
+.error404 #error-wrap .error-content .error-img img,
+.article-sort-item-img :first-child,
+#recent-posts > .recent-post-item .post_cover .post-bg,
+#aside-content .aside-list > .aside-list-item .thumbnail :first-child
+  border-radius: 10px
+
+// 边角圆角
+.cardHover,
+.error404 #error-wrap .error-content,
+.layout > div:first-child:not(.recent-posts),
+#recent-posts > .recent-post-item,
+.layout > .recent-posts .pagination > *:not(.space)
+  border-radius: 25px
+
+
+// 首页文章字体
+#page-header
+  #scroll-down
+    bottom: 120px !important
+    .scroll-down-effects
+      font-size: 33px !important
+
+// 音乐魔改
+.aplayer
+  &.aplayer-fixed
+    position: fixed !important
+    &.aplayer-narrow
+      .aplayer-body
+        left: 0px !important
+        // 默认情况下缩进左侧66px，只留一点箭头部分 
+        background-color:#ff7242
+        transition: all 1.0s
+        transform: translate(-66px,0)
+        border-radius: 0 5px 5px 0 !important
+        background: #ffffff8a !important
+        &:hover 
+          left: 0 !important
+          // 鼠标悬停是左侧缩进归零，完全显示按钮 
+          background-color:#ff7242
+          transition: all 1.0s
+          transform: translate(0px,0)
+        .aplayer-miniswitcher
+          border-radius: 0 5px 5px 0 !important
+          background: #e6e6e600 !important
+  // 手机端不显示歌词
+  +maxWidth1000()
+    &.aplayer-fixed 
+      .aplayer-lrc 
+        display: none !important
+
+// 分类磁贴图片铺满
+#categoryBar
+  li.categoryBar-list-item
+    background-size: cover!important
+
+// 去除主页面滚动条
+// body
+//   overflow-x: hidden !important
+//   *
+//     &::-webkit-scrollbar
+//       width: 0
+//       height: 0
+//       background-color: var(--bg_transparent)
+//     &::-webkit-scrollbar-thumb
+//       background: var(--canvas_sakura)
+//     &::-webkit-scrollbar-track
+//       background-color: var(--bg_transparent)
+
+
+// 右边按钮菱形效果
+#rightside > div > button,
+#rightside > div > a
+  clip-path: polygon(50% 0%, 95.5% 25%, 95.5% 75%, 50% 100%, 4.5% 75%, 4.5% 25%)
+
+
+// #meihua-button,
+// #naokuo_qiehuan,
+// #nightmode-button
+//   padding-left: 12px
+
+// 自定义夜间模式
+[data-theme="dark"]
+  --bg_transparent: transparent
+  --canvas_sakura: none
+
+  // 夜间模式伪类遮罩层透明
+  #footer::before
+    background: var(--bg_transparent)
+
+

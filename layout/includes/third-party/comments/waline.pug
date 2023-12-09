@@ -1,0 +1,44 @@
+- const { serverURL, option, pageview, login, wordLimit, imageUploader, copyright } = theme.waline
+- const { lazyload, count, use } = theme.comments
+
+script.
+  (() => {
+    const initWaline = () => {
+      const waline = Waline.init(Object.assign({
+        el: '#waline-wrap',
+        serverURL: '!{serverURL}',
+        pageview: !{lazyload ? false : pageview},
+        dark: 'html[data-theme="dark"]',
+        path: window.location.pathname,
+        comment: !{lazyload ? false : count},
+        emoji: [
+          'https://unpkg.com//@waline/emojis@1.2.0/qq',
+          'https://unpkg.com//@waline/emojis@1.2.0/bilibili',
+          'https://unpkg.com//@waline/emojis@1.2.0/weibo',
+        ],
+        login: '!{login}',
+        wordLimit: '!{wordLimit}',
+        imageUploader: !{imageUploader},
+        copyright: !{copyright},
+        search: false,
+        reaction: true,
+      }, !{JSON.stringify(option)}))
+      document.getElementById("wl-edit").setAttribute("placeholder","🍧这一生遇见你是我的荣幸🍨\n🍯随便写写吧,说不定评论系统能用呢🎂\n🥟祝您有愉快的一天🍟")
+    }
+
+    const loadWaline = async () => {
+      if (typeof Waline === 'object') initWaline()
+      else {
+        await getCSS('!{url_for(theme.asset.waline_css)}')
+        await getScript('!{url_for(theme.asset.waline_js)}')
+        initWaline()
+      }
+    }
+
+    if ('!{use[0]}' === 'Waline' || !!{lazyload}) {
+      if (!{lazyload}) btf.loadComment(document.getElementById('waline-wrap'),loadWaline)
+      else setTimeout(loadWaline, 0)
+    } else {
+      window.loadOtherComment = loadWaline
+    }
+  })()
