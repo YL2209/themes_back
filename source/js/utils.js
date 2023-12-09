@@ -323,10 +323,10 @@ const naokuo = {
     if (consoleKeyboard) {
       if (localStorage.getItem("keyboardToggle") === "true") {
         consoleKeyboard.classList.add("on");
-        anzhiyu_keyboard = true;
+        naokuo_keyboard = true;
       } else {
         consoleKeyboard.classList.remove("on");
-        anzhiyu_keyboard = false;
+        naokuo_keyboard = false;
       }
     }
   },
@@ -343,12 +343,12 @@ const naokuo = {
   // rewardShowConsole: function () {
   //   // 判断是否为赞赏打开控制台
   //   consoleEl.classList.add("reward-show");
-  //   anzhiyu.initConsoleState();
+  //   naokuo.initConsoleState();
   // },
   // // 显示中控台
   // showConsole: function () {
   //   consoleEl.classList.add("show");
-  //   anzhiyu.initConsoleState();
+  //   naokuo.initConsoleState();
   // },
   //隐藏中控台
   hideConsole: function () {
@@ -388,7 +388,7 @@ const naokuo = {
   //   if (commentBarrage) {
   //     if (window.getComputedStyle(commentBarrage).display === "flex") {
   //       commentBarrage.style.display = "none";
-  //       anzhiyu.snackbarShow("✨ 已关闭评论弹幕");
+  //       naokuo.snackbarShow("✨ 已关闭评论弹幕");
   //       document.querySelector(".menu-commentBarrage-text").textContent = "显示热评";
   //       document.querySelector("#consoleCommentBarrage").classList.remove("on");
   //       localStorage.setItem("commentBarrageSwitch", "false");
@@ -396,7 +396,7 @@ const naokuo = {
   //       commentBarrage.style.display = "flex";
   //       document.querySelector(".menu-commentBarrage-text").textContent = "关闭热评";
   //       document.querySelector("#consoleCommentBarrage").classList.add("on");
-  //       anzhiyu.snackbarShow("✨ 已开启评论弹幕");
+  //       naokuo.snackbarShow("✨ 已开启评论弹幕");
   //       localStorage.removeItem("commentBarrageSwitch");
   //     }
   //   }
@@ -491,12 +491,12 @@ const naokuo = {
           naokuo.changeMusicBg();
 
           // 暂停nav的音乐
-          // if (
-          //   document.querySelector("#nav-music meting-js").aplayer &&
-          //   !document.querySelector("#nav-music meting-js").aplayer.audio.paused
-          // ) {
-          //   anzhiyu.musicToggle();
-          // }
+          if (
+            document.querySelector("#nav-music meting-js").aplayer &&
+            !document.querySelector("#nav-music meting-js").aplayer.audio.paused
+          ) {
+            naokuo.musicToggle();
+          }
         }
       }, 100);
     }
@@ -651,6 +651,91 @@ const naokuo = {
         aplayerList.classList.remove("aplayer-list-hide");
       }
     });
+  },
+
+  //左下角音乐
+  // 音乐绑定事件
+  musicBindEvent: function () {
+    document.querySelector("#nav-music .aplayer-music").addEventListener("click", function () {
+      naokuo.musicTelescopic();
+    });
+    document.querySelector("#nav-music .aplayer-button").addEventListener("click", function () {
+      naokuo.musicToggle(false);
+    });
+  },
+  //切换音乐播放状态
+  musicToggle: function (changePaly = true) {
+    if (!naokuo_musicFirst) {
+      naokuo.musicBindEvent();
+      naokuo_musicFirst = true;
+    }
+    // let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
+    // let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
+    if (naokuo_musicPlaying) {
+      navMusicEl.classList.remove("playing");
+      // document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+      document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+      document.querySelector("#consoleMusic").classList.remove("on");
+      naokuo_musicPlaying = false;
+      navMusicEl.classList.remove("stretch");
+    } else {
+      navMusicEl.classList.add("playing");
+      // document.getElementById("menu-music-toggle").innerHTML = msgPause;
+      document.querySelector("#consoleMusic").classList.add("on");
+      naokuo_musicPlaying = true;
+      navMusicEl.classList.add("stretch");
+    }
+    if (changePaly) document.querySelector("#nav-music meting-js").aplayer.toggle();
+    // rm && rm.hideRightMenu();
+  },
+  // 音乐伸缩
+  musicTelescopic: function () {
+    if (navMusicEl.classList.contains("stretch")) {
+      navMusicEl.classList.remove("stretch");
+    } else {
+      navMusicEl.classList.add("stretch");
+    }
+  },
+  //音乐上一曲
+  musicSkipBack: function () {
+    navMusicEl.querySelector("meting-js").aplayer.skipBack();
+    // rm && rm.hideRightMenu();
+  },
+  //音乐下一曲
+  musicSkipForward: function () {
+    navMusicEl.querySelector("meting-js").aplayer.skipForward();
+    // rm && rm.hideRightMenu();
+  },
+  //获取音乐中的名称
+  musicGetName: function () {
+    var x = document.querySelector(".aplayer-title");
+    var arr = [];
+    for (var i = x.length - 1; i >= 0; i--) {
+      arr[i] = x[i].innerText;
+    }
+    return arr[0];
+  },
+
+  // 定义 intersectionObserver 函数，并接收两个可选参数
+  intersectionObserver: function (enterCallback, leaveCallback) {
+    let observer;
+    return () => {
+      if (!observer) {
+        observer = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.intersectionRatio > 0) {
+              enterCallback?.();
+            } else {
+              leaveCallback?.();
+            }
+          });
+        });
+      } else {
+        // 如果 observer 对象已经存在，则先取消对之前元素的观察
+        observer.disconnect();
+      }
+      return observer;
+    };
   },
 
 

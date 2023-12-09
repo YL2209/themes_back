@@ -11,6 +11,11 @@ var changeMusicListFlag = false;
 var defaultPlayMusicList = [];
 var themeColorMeta, pageHeaderEl, navMusicEl, consoleEl;
 
+// 第一次播放音乐
+var naokuo_musicFirst = false;
+// 音乐播放状态
+var naokuo_musicPlaying = false;
+
 document.addEventListener('DOMContentLoaded', function () {
   let headerContentWidth, $nav
   let mobileSidebarOpen = false
@@ -434,7 +439,9 @@ document.addEventListener('DOMContentLoaded', function () {
     // 第一次滑动到底部的标识符
     let scrollBottomFirstFlag = false;
     // 缓存常用dom元素
-    const waterfallDom = document.getElementById("waterfall"),
+    const musicDom = document.getElementById("nav-music"),
+      footerDom = document.getElementById("footer"),
+      waterfallDom = document.getElementById("waterfall"),
       $percentBtn = document.getElementById("percent"),
       $navTotop = document.getElementById("nav-totop"),
       $bodyWrap = document.getElementById("body-wrap");
@@ -490,6 +497,28 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
+    // 进入footer隐藏音乐
+    if (footerDom) {
+      naokuo
+        .intersectionObserver(
+          () => {
+            if (footerDom && musicDom && 768 < document.body.clientWidth) {
+              musicDom.style.bottom = "-10px";
+              musicDom.style.opacity = "0";
+            }
+            scrollBottomFirstFlag = true;
+          },
+          () => {
+            if (footerDom && musicDom && 768 < document.body.clientWidth) {
+              musicDom.style.bottom = "20px";
+              musicDom.style.opacity = "1";
+            }
+          }
+        )()
+        .observe(footerDom);
+    }
+
+    scrollTask();
     btf.addEventListenerPjax(window, 'scroll', scrollTask, { passive: true })
   }
 
@@ -897,6 +926,32 @@ document.addEventListener('DOMContentLoaded', function () {
     })
   }
 
+  // 监听nav是否被其他音频暂停⏸️
+  const listenNavMusicPause = function () {
+    const timer = setInterval(() => {
+      if (navMusicEl && navMusicEl.querySelector("#nav-music meting-js").aplayer) {
+        clearInterval(timer);
+        let msgPlay = '<i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span>';
+        let msgPause = '<i class="anzhiyufont anzhiyu-icon-pause"></i><span>暂停音乐</span>';
+        navMusicEl.querySelector("#nav-music meting-js").aplayer.on("pause", function () {
+          navMusicEl.classList.remove("playing");
+          document.getElementById("menu-music-toggle").innerHTML = msgPlay;
+          document.getElementById("nav-music-hoverTips").innerHTML = "音乐已暂停";
+          document.querySelector("#consoleMusic").classList.remove("on");
+          naokuo_musicPlaying = false;
+          navMusicEl.classList.remove("stretch");
+        });
+        navMusicEl.querySelector("#nav-music meting-js").aplayer.on("play", function () {
+          navMusicEl.classList.add("playing");
+          document.getElementById("menu-music-toggle").innerHTML = msgPause;
+          document.querySelector("#consoleMusic").classList.add("on");
+          naokuo_musicPlaying = true;
+          // navMusicEl.classList.add("stretch");
+        });
+      }
+    }, 16);
+  };
+
   const unRefreshFn = function () {
     window.addEventListener('resize', () => {
       adjustMenu(false)
@@ -911,6 +966,9 @@ document.addEventListener('DOMContentLoaded', function () {
     clickFnOfSubMenu()
     GLOBAL_CONFIG.islazyload && lazyloadImg()
     GLOBAL_CONFIG.copyright !== undefined && addCopyright()
+
+    //左下角音乐
+    GLOBAL_CONFIG.navMusic && listenNavMusicPause();
 
     if (GLOBAL_CONFIG.autoDarkmode) {
       window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
@@ -933,6 +991,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.refreshFn = function () {
     initAdjust()
+
+    //左下角音乐
+    navMusicEl = document.getElementById("nav-music");
 
     //中控台
     consoleEl = document.getElementById("console");

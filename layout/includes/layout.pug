@@ -55,4 +55,8 @@ html(lang=config.language data-theme=theme.display_mode naokuo-theme=theme.naoku
       include ./404.pug
 
     include ./rightside.pug
+
+    if (theme.nav_music.enable || theme.nav_music.console_widescreen_music)
+      include ./music.pug
+      
     include ./additional-js.pug

@@ -36,10 +36,10 @@
     //-   .console-btn-item.on#consoleCommentBarrage(onclick='naokuo.switchCommentBarrage()', title='热评开关')
     //-     a.commentBarrage
     //-       i.anzhiyufont.anzhiyu-icon-message
-    //- if theme.nav_music.enable
-    //-   .console-btn-item#consoleMusic(onclick='anzhiyu.musicToggle()', title='音乐开关')
-    //-     a.music-switch
-    //-       i.anzhiyufont.anzhiyu-icon-music
+    if theme.nav_music.enable
+      .console-btn-item#consoleMusic(onclick='naokuo.musicToggle()', title='音乐开关')
+        a.music-switch
+          i.anzhiyufont.anzhiyu-icon-music
     //- if theme.shortcutKey.enable
     //-   .console-btn-item#consoleKeyboard(onclick='anzhiyu.keyboardToggle()', title='快捷键开关')
     //-     a.keyboard-switch
